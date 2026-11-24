@@ -1,0 +1,233 @@
+{
+ "type": "FeatureCollection",
+ "name": "dari-brochure-demo",
+ "dari:synthetic": true,
+ "dari:note": "Data ilustrasi sintetis untuk brosur. Bukan hasil survei; tidak merepresentasikan kondisi jalan sebenarnya.",
+ "features": [
+  {
+   "type": "Feature",
+   "id": "demo-s1",
+   "properties": {
+    "id": "demo-s1",
+    "kind": "sidewalk",
+    "name": "Segmen ilustrasi A",
+    "state": "unverified",
+    "passable_wheelchair": "yes",
+    "width_m": 1.8,
+    "width_uncertainty_m": 0.2
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      106.7978,
+      -6.243
+     ],
+     [
+      106.799,
+      -6.2431
+     ],
+     [
+      106.8003,
+      -6.2432
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "demo-s2",
+   "properties": {
+    "id": "demo-s2",
+    "kind": "sidewalk",
+    "name": "Segmen ilustrasi B",
+    "state": "unverified",
+    "passable_wheelchair": "no",
+    "width_m": 0.9,
+    "width_uncertainty_m": 0.3
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      106.8003,
+      -6.2432
+     ],
+     [
+      106.8015,
+      -6.2433
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "demo-s3",
+   "properties": {
+    "id": "demo-s3",
+    "kind": "sidewalk",
+    "name": "Segmen ilustrasi C",
+    "state": "inferred",
+    "passable_wheelchair": "unknown",
+    "width_m": 1.4,
+    "width_uncertainty_m": 0.4
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      106.8003,
+      -6.2432
+     ],
+     [
+      106.8004,
+      -6.2444
+     ],
+     [
+      106.8005,
+      -6.2455
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "demo-s4",
+   "properties": {
+    "id": "demo-s4",
+    "kind": "sidewalk",
+    "name": "Segmen ilustrasi D",
+    "state": "unknown",
+    "passable_wheelchair": "unknown"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      106.7978,
+      -6.243
+     ],
+     [
+      106.7977,
+      -6.2443
+     ],
+     [
+      106.7976,
+      -6.2456
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "demo-s5",
+   "properties": {
+    "id": "demo-s5",
+    "kind": "sidewalk",
+    "name": "Segmen ilustrasi E",
+    "state": "unverified",
+    "passable_wheelchair": "no",
+    "width_m": 1.2,
+    "width_uncertainty_m": 0.3
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      106.7976,
+      -6.2456
+     ],
+     [
+      106.799,
+      -6.2456
+     ],
+     [
+      106.8005,
+      -6.2455
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "demo-c1",
+   "properties": {
+    "id": "demo-c1",
+    "kind": "crossing",
+    "name": "Penyeberangan ilustrasi",
+    "state": "unverified",
+    "passable_wheelchair": "unknown"
+   },
+   "geometry": {
+    "type": "LineString",
+    "coordinates": [
+     [
+      106.8003,
+      -6.2432
+     ],
+     [
+      106.8003,
+      -6.2426
+     ]
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "demo-o1",
+   "properties": {
+    "id": "demo-o1",
+    "kind": "obstacle",
+    "name": "Hambatan ilustrasi 1",
+    "obstacle_type": "vendor_cart",
+    "state": "unverified",
+    "passable_wheelchair": "no"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     106.8009,
+     -6.24325
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "demo-o2",
+   "properties": {
+    "id": "demo-o2",
+    "kind": "obstacle",
+    "name": "Hambatan ilustrasi 2",
+    "obstacle_type": "parked_vehicle",
+    "state": "unverified",
+    "passable_wheelchair": "no"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     106.799,
+     -6.2456
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "demo-o3",
+   "properties": {
+    "id": "demo-o3",
+    "kind": "obstacle",
+    "name": "Hambatan ilustrasi 3",
+    "obstacle_type": "bollard",
+    "state": "unverified",
+    "passable_wheelchair": "no"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     106.7997,
+     -6.24561
+    ]
+   }
+  }
+ ]
+}

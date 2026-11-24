@@ -1,0 +1,150 @@
+/* Panggung brosur: gambar desain 1080×1920 diskalakan, overlay diposisikan dalam persen. */
+.poster-page {
+  padding: 1rem;
+  background: var(--paper-alt);
+  min-height: 100svh;
+}
+
+.poster {
+  position: relative;
+  width: min(100%, 560px);
+  aspect-ratio: 1080 / 1920;
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.poster__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.poster__link,
+.poster__slot {
+  position: absolute;
+  display: block;
+  border-radius: 12px;
+}
+
+/* Area sentuh minimal 44 px. Diperluas ke atas (bottom: 0) agar tidak menutupi
+   elemen di bawah tautan; kotak tautan dan focus ring tetap sesuai desain. */
+.poster__link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: max(100%, 44px);
+  height: max(100%, 44px);
+}
+
+.poster .poster__link:focus-visible {
+  outline-offset: 2px;
+}
+
+/* Teks untuk pembaca layar, sama isinya dengan desain. */
+.poster-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- peta di slot (brosur) ---------- */
+.poster-map { background: #e9e4dc; overflow: hidden; }
+/* Selector sengaja lebih spesifik: MapLibre memberi .maplibregl-map position: relative pada kontainer ini. */
+.poster .poster-map .poster-map__canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+.poster-map__badge {
+  margin: 0; padding: 2px 8px; border-radius: 8px; min-width: 0; max-width: 100%;
+  font-size: 11px; font-weight: 700; line-height: 1.3;
+  background: #fff3d6; color: #5c3a00; border: 1px solid #e9c77a;
+}
+.poster-map__badge:not([hidden]) { display: block; }
+.poster-map__badge[data-source="pilot"] { background: #ede7fa; color: #3d1f6b; border-color: #c9b8ef; }
+
+.poster-map__expand,
+.poster-map__close {
+  position: absolute; z-index: 3; min-width: 44px; min-height: 44px; margin: 0; padding: 0 0.9rem;
+  border: 0; border-radius: 999px; background: var(--navy); color: #fff;
+  font: inherit; font-size: 0.85rem; font-weight: 700; line-height: 1; white-space: nowrap;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(22, 33, 43, 0.28);
+}
+.poster-map__expand { top: 6px; right: 6px; }
+.poster-map__close { display: none; top: calc(8px + env(safe-area-inset-top)); right: calc(8px + env(safe-area-inset-right)); }
+
+/* Dok bawah: badge sumber data, kredit OpenStreetMap, dan (layar penuh) detail, daftar, legenda. */
+.poster .poster-map .poster-map__dock {
+  position: absolute; z-index: 3; left: 6px; right: 6px; bottom: 6px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.poster-map__foot {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 4px 8px;
+}
+.poster-map__foot[hidden] { display: none; }
+.poster-map__credit {
+  display: inline-flex; align-items: center; min-height: 28px; margin-left: auto; padding: 0 8px;
+  border-radius: 8px; background: rgba(255, 255, 255, 0.92); color: var(--navy);
+  font-size: 11px; font-weight: 600; line-height: 1.3; white-space: nowrap;
+}
+
+/* Panel ⓘ atribusi MapLibre tampil di atas tombol dan dok agar tidak tertutup. */
+.poster .poster-map .maplibregl-ctrl-top-left { z-index: 4; }
+
+/* Mini: hanya pratinjau. Zoom dan tombol 3D disembunyikan; atribusi (ⓘ) dan kredit tetap. */
+.poster .poster-map:not(.is-expanded) .maplibregl-ctrl-top-right,
+.poster .poster-map:not(.is-expanded) .map-3d-toggle,
+.poster .poster-map:not(.is-expanded) .map-3d-note,
+.poster .poster-map:not(.is-expanded) .poster-map__dock > :not(.poster-map__foot) { display: none; }
+
+/* Layar penuh: menutupi viewport, tidak terpengaruh overflow:hidden pada .poster (tanpa transform di leluhur). */
+.poster .poster-map.is-expanded {
+  position: fixed; inset: 0; z-index: 50; width: auto; height: 100vh; height: 100dvh;
+  border-radius: 0; background: #e9e4dc;
+}
+.poster .poster-map.is-expanded .poster-map__expand { display: none; }
+.poster .poster-map.is-expanded .poster-map__close { display: block; }
+.poster .poster-map.is-expanded .maplibregl-ctrl-top-right { top: 52px; }
+.poster .poster-map.is-expanded .map-3d-toggle { left: 10px; right: auto; top: 56px; }
+.poster .poster-map.is-expanded .map-3d-note { left: 10px; right: auto; top: 108px; }
+.poster .poster-map.is-expanded .poster-map__dock {
+  left: 10px; right: 10px; bottom: calc(6px + env(safe-area-inset-bottom));
+  /* Dok tidak boleh menutupi tombol "Tutup peta" (berakhir di 52px + safe area atas). */
+  max-height: calc(100vh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  max-height: calc(100dvh - 64px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  overflow-y: auto; overscroll-behavior: contain;
+}
+.poster .poster-map.is-expanded .poster-map__dock > * { flex-shrink: 0; }
+
+/* Panel detail di layar penuh: bagian dok, di atas legenda dan kredit. */
+.poster .poster-map__dock > .poster-detail {
+  position: static; left: auto; right: auto; bottom: auto; transform: none;
+  width: auto; max-width: none; max-height: 40vh; max-height: 40dvh; margin: 0; overflow: auto; overscroll-behavior: auto;
+  padding: 1rem 1.1rem; border-radius: var(--radius); background: var(--paper); color: var(--ink);
+  box-shadow: 0 8px 28px rgba(22, 33, 43, 0.22); font-size: 1rem;
+}
+.poster .poster-map__dock > .poster-detail[data-state="empty"] {
+  align-self: center; width: max-content; max-width: 100%; padding: 0.55rem 1rem; border-radius: 999px;
+  font-size: 0.9rem; pointer-events: none; box-shadow: 0 4px 14px rgba(22, 33, 43, 0.2);
+}
+.poster .poster-detail dl { display: grid; grid-template-columns: auto 1fr; gap: 0.3rem 1rem; margin: 0; font-size: 0.97rem; }
+.poster .poster-detail dt { font-weight: 700; }
+.poster .poster-detail dd { margin: 0; }
+.poster .poster-detail .detail__close { display: block; }
+
+/* Daftar dan legenda di layar penuh: ringkas, tidak menutupi kontrol di bagian atas. */
+.poster .poster-map__list { background: rgba(255, 255, 255, 0.96); border-radius: 12px; padding: 0 0.6rem 0.4rem; font-size: 0.85rem; }
+.poster .poster-map__list summary { min-height: 40px; font-size: 0.9rem; }
+.poster .poster-map__list ul { max-height: 28vh; overflow: auto; overscroll-behavior: auto; }
+.poster .poster-map__list button { padding: 0.5rem 0.7rem; font-size: 0.85rem; }
+.poster .poster-map__legend {
+  margin: 0; padding: 0.4rem 0.6rem; border-radius: 10px; background: rgba(255, 255, 255, 0.96);
+  font-size: 0.78rem; gap: 0.25rem 0.9rem; color: var(--ink);
+}

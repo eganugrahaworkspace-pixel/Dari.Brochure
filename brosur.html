@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Brosur Dari.</title>
+    <meta name="description" content="Prototipe riset peta aksesibilitas untuk pengguna kursi roda di Indonesia. Coba miniatur peta Blok M." />
+    <meta name="theme-color" content="#20303F" />
+    <meta property="og:title" content="Brosur Dari." />
+    <meta property="og:description" content="Prototipe riset peta aksesibilitas untuk pengguna kursi roda di Indonesia. Coba miniatur peta Blok M." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2320303F'/%3E%3Ctext x='16' y='22' font-family='system-ui' font-size='18' font-weight='700' fill='white' text-anchor='middle'%3Ed.%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <main class="poster-page">
+      <div class="poster">
+        <img
+          class="poster__img"
+          src="/brosur/design.jpg"
+          srcset="/brosur/design-720.jpg 720w, /brosur/design.jpg 1080w"
+          sizes="min(calc(100vw - 2rem), 560px)"
+          fetchpriority="high"
+          width="1080"
+          height="1920"
+          alt="Brosur Dari., better way to get there"
+        />
+
+        <div id="poster-map" class="poster__slot"></div>
+
+        <a
+          id="poster-qr"
+          class="poster__link"
+          href="https://q.me-qr.com/7r1og5ps"
+          target="_blank"
+          rel="noopener"
+          aria-label="Pindai atau buka tautan QR dari."
+        ></a>
+
+        <a
+          id="poster-instagram"
+          class="poster__link"
+          href="https://instagram.com/gowith.dari"
+          target="_blank"
+          rel="noopener"
+          aria-label="Buka Instagram gowith.dari"
+        ></a>
+
+        <div class="poster-sr" lang="en">
+          <p>better way to get there</p>
+          <p>First Accessible Map for Wheelchair Users in Indonesia.</p>
+
+          <h2>Team</h2>
+          <ul>
+            <li>Melani (Project Management)</li>
+            <li>Nayyara (Designer UI/UX)</li>
+            <li>Ernesta (Designer UI/UX)</li>
+            <li>Gading (Tech Developer)</li>
+            <li>Michael (Tech Developer)</li>
+            <li>Jesslyn (Tech Developer)</li>
+            <li>Ega (Tech Developer)</li>
+          </ul>
+
+          <h2>About dari.</h2>
+          <p>Dari is an iOS navigation app that helps wheelchair users independently explore recreational areas through accessibility aware route guidance and community-updated information about barriers along the way.</p>
+
+          <h2>Features</h2>
+          <ul>
+            <li>Accessibility-Aware Navigation</li>
+            <li>Community-Powered Barrier Reporting</li>
+            <li>Accessibility Information</li>
+          </ul>
+
+          <p>Explore dari. Discover a better way to get there.</p>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/src/poster.ts"></script>
+  </body>
+</html>

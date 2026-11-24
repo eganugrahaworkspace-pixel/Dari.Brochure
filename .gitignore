@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tgz
+
+# Copied from apps/ios/dari/dari/Resources/DariMap by scripts/sync-map-assets.mjs
+public/map/
+
+# Pilot data is internal-only until the tim sign off
+public/data/pilot-public.geojson
+public/data/pilot-public.manifest.json
